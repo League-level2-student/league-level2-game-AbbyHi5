@@ -1,17 +1,17 @@
 import javax.swing.JFrame;
 
-public class JumperMan {
+public class SpaceFighter {
 
 	GamePanel game = new GamePanel();
-	JFrame frame = new JFrame("Jumper Man");
+	JFrame frame = new JFrame("League Invaders");
 	
 	public static final int HEIGHT = 600;
-	public static final int WIDTH = 800;
-	static JumperMan jumper = new JumperMan();
+	public static final int WIDTH = 500;
+	static SpaceFighter space = new SpaceFighter();
 	
 	public static void main(String[] args) {
 		
-		jumper.setup();
+		space.setup();
 		
 	}
 	
@@ -24,6 +24,5 @@ public class JumperMan {
 		frame.setSize(WIDTH, HEIGHT);
 		
 	}
-	
 	
 }
