@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
+import java.util.Date;
 
 import javax.swing.Timer;
 import javax.imageio.ImageIO;
@@ -22,6 +23,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	Font gameOver;
 	Timer frameDraw;
 	Timer alienSpawn;
+	Date timeS;
+	Date timeE;
 	Ship ship;
 	ObjectManager objectManager;
 	public static BufferedImage image;
@@ -30,6 +33,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	boolean up;
 	boolean left;
 	boolean right;
+	boolean time;
 	
 	public GamePanel() {
 		
@@ -39,6 +43,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		frameDraw = new Timer(1000/60,this);
 		frameDraw = new Timer(1000/60,this);
 		frameDraw.start();
+		timeS = new Date();
 		ship = new Ship(100,400,50,50);
 		objectManager = new ObjectManager(ship);
 		if (needImage) {
@@ -47,7 +52,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		up = false;
 		right = false;
 		left = false;
-		
+		time = true;
 	}
 	
 	@Override
@@ -97,12 +102,18 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	
 	
 	void drawEndState(Graphics g)  {
+		
+		if(time) {
+		timeE = new Date();
+		time = false;
+		}
 		g.setColor(Color.RED);
 		g.fillRect(0, 0, SpaceFighter.WIDTH, SpaceFighter.HEIGHT);
 		g.setFont(gameOver);
 		g.setColor(Color.BLACK);
 		g.drawString("Game Over!", 120, 100);
 		g.setFont(enterFont);
+		g.drawString("You survived " + (timeE.getTime()- timeS.getTime())/1000+ " seconds!", 140, 300);
 		g.drawString("Press ENTER to restart", 140, 500);
 	}
 
