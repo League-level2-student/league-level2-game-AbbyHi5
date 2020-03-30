@@ -12,7 +12,7 @@ public class Ship extends GameObject {
 
 	public Ship(int x, int y, int width, int height) {
 		super(x, y, width, height);
-		speed = 10;
+		speed = 15;
 		if (needImage) {
 			loadImage("ship.png");
 		}
@@ -44,7 +44,7 @@ public class Ship extends GameObject {
 	public void up() {
 		y -= speed;
 	}
-	
+
 	public void down() {
 		y += speed;
 	}
@@ -64,14 +64,6 @@ public class Ship extends GameObject {
 	void update() {
 
 		super.update();
-		// gravity
-	/*	if(touching == false) {
-			y += speed / 2;	
-		}
-		else {
-			
-		}
-		*/
 	}
 
 }

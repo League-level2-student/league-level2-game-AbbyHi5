@@ -4,18 +4,18 @@ import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
 
-public class Asteroid extends GameObject {
+public class Shield extends GameObject {
 
 	public static BufferedImage image;
 	public static boolean needImage = true;
 	public static boolean gotImage = false;
 
-	public Asteroid(int x, int y, int width, int height) {
+	public Shield(int x, int y, int width, int height) {
 		super(x, y, width, height);
-		speed = 1.25;
+		speed = .75;
 
 		if (needImage) {
-			loadImage("Asteroid.png");
+			loadImage("Shield.png");
 		}
 	}
 
